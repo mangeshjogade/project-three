@@ -14,3 +14,4 @@ rule "Max Reward Not Null"
   then
     r.checkRewardsNotNull(r.Earned_Rewards,r.total_rewards_max);
 end
+//comment
