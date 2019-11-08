@@ -4,7 +4,7 @@ import com.bitwiseglobal.jbpm.dataobjects.RewardsData;
 
 rule "Max Reward Null"
 	salience 2
-	dialect "mvel"
+	dialect "java"
 	when
 		r : RewardsData( total_rewards_max == null )
 	then
