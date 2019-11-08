@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.3">
+
+	<Header copyright="www.dmg.org" description=" Transformation in Tree Model of PMML."/>
+	<DataDictionary numberOfFields="2">
+		<DataField name="n1" optype="continuous" dataType="integer"/>
+		<DataField name="n2" optype="continuous" dataType="integer"/>
+	</DataDictionary>
+
+	<TransformationDictionary>
+		<DefineFunction name="sum" dataType="integer" optype="continuous">
+		  <ParameterField name="n1" optype="continuous" dataType="integer"/>
+		  <ParameterField name="n2" optype="continuous" dataType="integer"/>
+		  <Apply function="+">
+			<FieldRef field="n1"/>
+			<FieldRef field="n2"/>
+		</Apply>
+		</DefineFunction>
+		
+		<DerivedField name="result" dataType="integer" optype="continuous">
+		  <Apply function="sum">
+			<FieldRef field="n1"/>
+			<FieldRef field="n2"/>
+		  </Apply>
+		</DerivedField>
+	</TransformationDictionary>
+
+
+	<TreeModel modelName="demoTreeModel" functionName="classification">
+		<MiningSchema>
+			<MiningField name="n1"/>
+			<MiningField name="n2"/>
+		</MiningSchema>
+
+        <Output>
+			<OutputField name="total" optype="continuous" dataType="integer" feature="transformedValue">
+			    <FieldRef field="result" />
+			</OutputField>
+		</Output>
+
+
+        <Node>
+            <True/>
+		</Node>
+	</TreeModel>
+</PMML>
+
