@@ -1,2 +1,16 @@
 package com.bitwiseglobal.npd_space.topic1.project_three;
 
+
+
+rule "Max Reward Null"
+  when
+    r: RewardsData(total_rewards_max == null)
+  then
+    r.checkRewardsNull(r.Earned_Rewards);
+end
+rule "Max Reward Not Null"
+  when
+    r: RewardsData(total_rewards_max != null)
+  then
+    r.checkRewardsNotNull(r.Earned_Rewards,r.total_rewards_max);
+end
