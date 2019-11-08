@@ -1,6 +1,6 @@
 package com.bitwiseglobal.npd_space.topic1.project_three;
 
-
+import com.bitwiseglobal.jbpm.dataobjects.RewardsData;
 
 rule "Max Reward Null"
   when
